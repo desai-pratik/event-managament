@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import Eventcard from '../../utils/Cards/Eventcard';
+import { toast } from 'react-toastify';
 
 const PastEvents = () => {
     const [allPastEvents, setAllPastEvents] = useState();
@@ -7,7 +8,9 @@ const PastEvents = () => {
         fetch("http://localhost:5000/event/pastevents")
             .then((response) => response.json())
             .then((data) => setAllPastEvents(data.doc))
-            .catch((error) => console.log(error));
+            .catch((error) => {
+                toast.error(`error :  ${error.message}`);
+            });
     }, []);
     if (allPastEvents?.length > 0) {
         return (

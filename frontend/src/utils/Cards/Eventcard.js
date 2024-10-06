@@ -8,6 +8,7 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const Eventcard = ({ location, date, img, eventName, id, isStanding }) => {
   const navigate = useNavigate();
@@ -21,13 +22,13 @@ const Eventcard = ({ location, date, img, eventName, id, isStanding }) => {
             },
         });
         if (response.status === 200 || response.status === 204) {
-            console.log("Event deleted successfully");
+            toast.success("Event deleted successfully!");
             navigate("/dashboard");
       } else {
-        console.error("Failed to delete the event");
+        toast.error(`Failed to delete the event`);
       }
     } catch (error) {
-      console.error("Error deleting event: " + error.message);
+        toast.error(`error :  ${error.message}`);
     }
   };
   

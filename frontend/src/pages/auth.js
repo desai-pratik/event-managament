@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import axios from "axios";
 import SuccessModal from "../utils/modal/SuccessModal";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Auth = () => {
   const [showSuccessModal, setShowSuccessModal] = useState(false);
@@ -25,8 +26,9 @@ const Auth = () => {
     try {
       await axios.post(`${process.env.REACT_APP_API_KEY}user/register`, formData);
       navigate("/login");
+      toast.success("register successful!");
     } catch (error) {
-      console.log(error);
+        toast.error(`error :  ${error.message}`);
     }
   };
   return (

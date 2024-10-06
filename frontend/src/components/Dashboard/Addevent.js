@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 const Addevent = () => {
   const [formData, setFormData] = useState({
     eventName: "",
@@ -81,15 +82,16 @@ const Addevent = () => {
         rightWingMaxSeat: "",
       });
       setFile(null);
+      toast.success("Created event successful!");
     } catch (error) {
-      console.error(error);
       alert("Error creating event");
+      toast.error(`Error creating event. ${error.message}` );
     }
   };
 
   return (
     <div className="container">
-      <img src="/images/nainoa-shizuru-unsplash-blur.jpg" className="object-fit-cover" height="200px" width="100%" alt="back" />
+      <img src="/images/nicholas-green-unsplash-blur.jpg" style={{objectFit: "cover"}} height="200px" width="100%" alt="back" />
       <h2>Add Event</h2>
       <form onSubmit={handleSubmit} encType="multipart/form-data">
         <div className="row mb-3">

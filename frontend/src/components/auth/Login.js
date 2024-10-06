@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import logo from "../../assets/logo.png";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -23,9 +24,10 @@ const Login = () => {
       const response = await axios.post(`${process.env.REACT_APP_API_KEY}user/signIn`, formData);
       const token = response.data.token;
       localStorage.setItem("authToken", token);
+      toast.success("Login successful!");
       navigate("/");
     } catch (error) {
-      console.log(error);
+        toast.error(`Login failed! Please check your credentials. ${error.message}` );
     }
   };
 

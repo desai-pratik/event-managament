@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const EventDetails = () => {
   const [eventDetails, setEventDetails] = useState();
@@ -22,7 +23,7 @@ const EventDetails = () => {
       .then((data) => {
         setEventDetails(data.doc);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => toast.error(`error :  ${err.message}`));
   }, [id]);
 
   const handleDelete = async () => {
@@ -34,13 +35,13 @@ const EventDetails = () => {
         },
       });
       if (response.status === 200 || response.status === 204) {
-        console.log("Event deleted successfully");
+        toast.success("Event deleted successfully!");
         navigate("/dashboard");
       } else {
-        console.error("Failed to delete the event");
+        toast.error("Failed to delete the event");
       }
     } catch (error) {
-      console.error("Error deleting event: " + error.message);
+        toast.error(`Error deleting event: ${error.message}`);
     }
   };
 

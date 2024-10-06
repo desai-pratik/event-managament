@@ -2,6 +2,7 @@ import { Box, Button, TextField, Typography } from "@mui/material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const EditEvent = () => {
   const [eventDetails, setEventDetails] = useState({
@@ -22,9 +23,8 @@ const EditEvent = () => {
       .then((response) => response.json())
       .then((data) => {
         setEventDetails(data.doc);
-        console.log(data.doc);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => toast.error(`Error : ${err.message}`));
   }, [id]);
 
   const handleChange = (e) => {
@@ -54,10 +54,10 @@ const EditEvent = () => {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(response.data.message);
       navigate("/dashboard/"+id);
+      toast.success("Event Edit successfully!");
     } catch (error) {
-      console.error("Error updating event:", error.message);
+      toast.error(`Failed to delete the ${error.message}`);
     }
   };
 

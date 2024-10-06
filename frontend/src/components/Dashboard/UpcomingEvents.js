@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Eventcard from "../../utils/Cards/Eventcard";
+import { toast } from "react-toastify";
 
 const UpcomingEvents = () => {
   const [allUpcomingEvents, setAllUpcomingEvents] = useState();
@@ -7,7 +8,7 @@ const UpcomingEvents = () => {
     fetch("http://localhost:5000/event/upcomingevents")
       .then((response) => response.json())
       .then((data) => setAllUpcomingEvents(data.doc))
-      .catch((error) => console.log(error));
+      .catch((error) => toast.error(`error :  ${error.message}`));
   }, []);
   if (allUpcomingEvents?.length > 0) {
     return (
