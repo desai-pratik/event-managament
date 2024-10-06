@@ -13,14 +13,12 @@ const App = () => {
   const navigate = useNavigate();
   useEffect(() => {
     const storedToken = localStorage.getItem("authToken");
-    if (!token) {
+    if (!storedToken) {
       navigate("/login");
+    } else {
       setToken(storedToken);
-    }else{
-      navigate("/");
     }
-  }, [token, navigate]);
-
+  }, [navigate]);
   return (
     <>
       <Routes>
