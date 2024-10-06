@@ -14,9 +14,9 @@ This is event booking website with admin panel to manage and register events.
  * Express
  * Mongoose
 
- [home page](./frontend/public/images/Screenshot_9.png)
- [create event page](./frontend/public/images/Screenshot_10.png)
- [vie event page](./frontend/public/images/Screenshot_11.png)
+ ![home page](./frontend/public/images/Screenshot_9.png)
+ ![create event page](./frontend/public/images/Screenshot_10.png)
+ ![vie event page](./frontend/public/images/Screenshot_11.png)
  
 
  # Steps to use it:
