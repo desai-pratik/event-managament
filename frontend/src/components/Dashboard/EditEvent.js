@@ -19,7 +19,7 @@ const EditEvent = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/event/${id}`)
+    fetch(`${process.env.REACT_APP_API_KEY}event/${id}`)
       .then((response) => response.json())
       .then((data) => {
         setEventDetails(data.doc);
@@ -49,7 +49,7 @@ const EditEvent = () => {
     e.preventDefault();
     try {
       const token = localStorage.getItem("authToken");
-      const response = await axios.patch(`http://localhost:5000/event/${id}`, eventDetails, {
+      const response = await axios.patch(`${process.env.REACT_APP_API_KEY}event/${id}`, eventDetails, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

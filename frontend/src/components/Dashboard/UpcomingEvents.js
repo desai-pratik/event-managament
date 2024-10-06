@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 const UpcomingEvents = () => {
   const [allUpcomingEvents, setAllUpcomingEvents] = useState();
   useEffect(() => {
-    fetch("http://localhost:5000/event/upcomingevents")
+    fetch(`${process.env.REACT_APP_API_KEY}event/upcomingevents`)
       .then((response) => response.json())
       .then((data) => setAllUpcomingEvents(data.doc))
       .catch((error) => toast.error(`error :  ${error.message}`));

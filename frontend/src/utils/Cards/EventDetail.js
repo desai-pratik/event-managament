@@ -18,7 +18,7 @@ const EventDetails = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/event/${id}`)
+    fetch(`${process.env.REACT_APP_API_KEY}event/${id}`)
       .then((response) => response.json())
       .then((data) => {
         setEventDetails(data.doc);
@@ -29,7 +29,7 @@ const EventDetails = () => {
   const handleDelete = async () => {
     try {
       const token = localStorage.getItem("authToken");
-      const response = await axios.delete(`http://localhost:5000/event/${id}`, {
+      const response = await axios.delete(`${process.env.REACT_APP_API_KEY}event/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

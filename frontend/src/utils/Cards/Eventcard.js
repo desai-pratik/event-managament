@@ -16,7 +16,7 @@ const Eventcard = ({ location, date, img, eventName, id, isStanding }) => {
   const handleDelete = async () => {
     try {
         const token = localStorage.getItem("authToken");
-        const response = await axios.delete(`http://localhost:5000/event/${id}`, {
+        const response = await axios.delete(`${process.env.REACT_APP_API_KEY}event/${id}`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },

@@ -61,7 +61,7 @@ const Addevent = () => {
     }
 
     try {
-      const response = await axios.post("http://localhost:5000/event/addevent", formDataToSend, {
+      const response = await axios.post(`${process.env.REACT_APP_API_KEY}event/addevent`, formDataToSend, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
